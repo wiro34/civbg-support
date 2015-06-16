@@ -20,6 +20,22 @@ html, body, [ui-view] {
 
 .navbar {
   margin-bottom: 0;
+
+  @at-root {
+    .container {
+      background-color: gray;
+    }
+  }
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+  src: url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2') format('woff2'),
+  url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+  url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg') format('svg');
 }
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject

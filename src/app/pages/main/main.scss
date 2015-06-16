@@ -17,22 +17,37 @@
     margin: 5px;
   }
 
+  &.RED {
+    background-color: #FFE6E6;
+  }
   .player-badge.RED {
     background-color: #FF9FAB;
   }
 
+  &.GREEN {
+    background-color: #CCEBD6;
+  }
   .player-badge.GREEN {
     background-color: #4ED662;
   }
 
+  &.BLUE {
+    background-color: #D6EBFF;
+  }
   .player-badge.BLUE {
     background-color: #6C9FFF;
   }
 
+  &.YELLOW {
+    background-color: #FFFFCC;
+  }
   .player-badge.YELLOW {
     background-color: #FFFD69;
   }
 
+  &.PURPLE {
+    background-color: #F5CCFF;
+  }
   .player-badge.PURPLE {
     background-color: #EC9BF1;
   }

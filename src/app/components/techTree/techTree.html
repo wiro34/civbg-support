@@ -7,7 +7,7 @@
         </a>
 
         <div class="tech-list-item-wrapper">
-          <a>{{ctrl.toName(tech)}}</a>
+          <a ng-click="ctrl.openDetail(tech)">{{ctrl.toName(tech)}}</a>
         </div>
       </li>
       <li class="tech-list-item append-tech" ng-if="ctrl.isTechAddable(level)">

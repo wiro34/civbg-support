@@ -1,0 +1,35 @@
+<div ng-controller="ArmsInfoController as ctrl" class="arms-info">
+  <script type="text/ng-template" id="arms-dropdown-template.html">
+    <img ng-src="assets/images/arms_rank{{model}}.png" ng-if="!airforce">
+    <span class="airforce-none" ng-if="airforce && model === 0"></span>
+    <img src="assets/images/arms_airforce.png" ng-if="airforce && model === 1">
+  </script>
+
+  <div class="arms-wrapper sword">
+    <span class="arms-icon">歩</span>
+    <span class="arms-rank-select img-thumbnail">
+      <arms-dropdown player="player" ng-model="player.arms.sword"></arms-dropdown>
+    </span>
+  </div>
+
+  <div class="arms-wrapper cannon">
+    <span class="arms-icon">砲</span>
+    <span class="arms-rank-select img-thumbnail">
+      <arms-dropdown player="player" ng-model="player.arms.cannon"></arms-dropdown>
+    </span>
+  </div>
+
+  <div class="arms-wrapper cavalry">
+    <span class="arms-icon">騎</span>
+    <span class="arms-rank-select img-thumbnail">
+      <arms-dropdown player="player" ng-model="player.arms.cavalry"></arms-dropdown>
+    </span>
+  </div>
+
+  <div class="arms-wrapper airforce">
+    <span class="arms-icon">航</span>
+    <span class="arms-rank-select img-thumbnail">
+      <arms-dropdown player="player" ng-model="player.arms.airforce" airforce="true"></arms-dropdown>
+    </span>
+  </div>
+</div>

@@ -2,8 +2,9 @@
 
 export default
 class TechTreeController {
-  constructor($scope, $window, Players, Tech) {
+  constructor($scope, $window, $modal, Players, Tech) {
     this.$window = $window;
+    this.$modal = $modal;
     this.player = $scope.player;
     this.players = Players.players;
     this.Tech = Tech;
@@ -16,6 +17,7 @@ class TechTreeController {
     if (!_.isObject(this.player.tech)) {
       this.player.tech = {};
     }
+    this.player.tech.keep = true;
   }
 
   toName(techId) {
@@ -37,7 +39,7 @@ class TechTreeController {
 
   isNewtonUsed() {
     var containsNewton = (techIds) => _.contains(techIds, 'newton');
-    var newtonScanner = (player) => containsNewton(player.tech.one) || containsNewton(player.tech.two);
+    var newtonScanner = (player) => containsNewton(player.tech.one) || containsNewton(player.tech.two) || containsNewton(player.tech.three) || containsNewton(player.tech.four);
     return _.find(this.players, newtonScanner);
   }
 
@@ -46,9 +48,17 @@ class TechTreeController {
       .filter((tech) => tech.level === level)
       .filter((tech) => _.values(this.player.tech[level]).indexOf(tech.id) === -1)
       .value();
-    if ((level === 'one' || level === 'two') && !this.isNewtonUsed()) {
+
+    // ニュートン
+    if (level !== 'five' && !this.isNewtonUsed()) {
       techs.push(this.Tech[this.Tech.length - 1]);
     }
+
+    // 初期技術
+    if (level === 'one' && _.isEmpty(this.player.tech.one)) {
+      return _.filter(this.Tech, (tech) => tech.level === 'one' || tech.level === 'two');
+    }
+
     return techs;
   }
 
@@ -58,6 +68,7 @@ class TechTreeController {
       this.player.tech[level] = {};
     }
     this.player.tech[level][length + 1] = techId;
+    this.updateArmsRank();
   }
 
   removeTech(level, techId) {
@@ -65,9 +76,59 @@ class TechTreeController {
       var index = this.player.tech[level].indexOf(techId);
       if (index >= 0) {
         this.player.tech[level].splice(index, 1);
+        this.updateArmsRank();
       }
     }
   }
+
+  updateArmsRank() {
+    var techArray = _.compact(_.flatten([
+      _.values(this.player.tech.one),
+      _.values(this.player.tech.two),
+      _.values(this.player.tech.three),
+      _.values(this.player.tech.four)
+    ]));
+
+    this.player.arms = {
+      sword: 1,
+      cannon: 1,
+      cavalry: 1,
+      airforce: 0
+    };
+
+    _.chain(techArray).map(this.Tech.findById).filter((tech) => angular.isString(tech.arms)).each((tech) => {
+      if (tech.arms.indexOf('歩兵') === 0) {
+        this.player.arms.sword = _.max([this.player.arms.sword, +tech.arms.slice(-1)]);
+      }
+      if (tech.arms.indexOf('砲兵') === 0) {
+        this.player.arms.cannon = _.max([this.player.arms.cannon, +tech.arms.slice(-1)]);
+      }
+      if (tech.arms.indexOf('騎兵') === 0) {
+        this.player.arms.cavalry = _.max([this.player.arms.cavalry, +tech.arms.slice(-1)]);
+      }
+      if (tech.arms.indexOf('全兵') === 0) {
+        this.player.arms.sword = _.max([this.player.arms.sword, +tech.arms.slice(-1)]);
+        this.player.arms.cannon = _.max([this.player.arms.cannon, +tech.arms.slice(-1)]);
+        this.player.arms.cavalry = _.max([this.player.arms.cavalry, +tech.arms.slice(-1)]);
+      }
+      if (tech.arms.indexOf('飛行機') === 0) {
+        this.player.arms.airforce = 1;
+      }
+    });
+  }
+
+  openDetail(techId) {
+    this.$modal.open({
+      animation: true,
+      templateUrl: 'app/components/dialogs/techDetail.html',
+      controller: 'TechDetailController',
+      controllerAs: 'ctrl',
+      size: 'lg',
+      resolve: {
+        techId: () => techId
+      }
+    });
+  }
 }
 
-TechTreeController.$inject = ['$scope', '$window', 'Players', 'Tech'];
+TechTreeController.$inject = ['$scope', '$window', '$modal', 'Players', 'Tech'];

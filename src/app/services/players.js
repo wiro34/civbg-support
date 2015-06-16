@@ -27,7 +27,7 @@ class Players {
       this.players.$add({
         color: color,
         tech: {
-          one: [], two: [], three: [], four: []
+          one: [], two: [], three: [], four: [], keep: true
         }
       });
     });
