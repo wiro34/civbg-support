@@ -1,0 +1,47 @@
+<form name="NewGameForm" class="new-game-form form-horizontal">
+  <div class="form-group">
+    <label for="new-game-first-color" class="col-sm-2 control-label">1st</label>
+
+    <div class="col-sm-4">
+      <select name="first" id="new-game-first-color" class="form-control"
+              ng-model="ctrl.colors[0]"
+              ng-options="color for color in ctrl.restColors(0)" required>
+      </select>
+    </div>
+
+    <label for="new-game-second-color" class="col-sm-2 control-label">2nd</label>
+
+    <div class="col-sm-4">
+      <select name="second" id="new-game-second-color" class="form-control"
+              ng-model="ctrl.colors[1]"
+              ng-options="color for color in ctrl.restColors(1)" required>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="new-game-third-color" class="col-sm-2 control-label">3rd</label>
+
+    <div class="col-sm-4">
+      <select name="third" id="new-game-third-color" class="form-control"
+              ng-model="ctrl.colors[2]"
+              ng-options="color for color in ctrl.restColors(2)" required>
+      </select>
+    </div>
+
+    <label for="new-game-fourth-color" class="col-sm-2 control-label">4th</label>
+
+    <div class="col-sm-4">
+      <select name="fourth" id="new-game-fourth-color" class="form-control"
+              ng-model="ctrl.colors[3]"
+              ng-options="color for color in ctrl.restColors(3)" required>
+      </select>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <p ng-if="NewGameForm.$invalid">プレイヤーの色を選んでください。</p>
+    <button type="button" class="btn btn-primary"
+            ng-click="ctrl.ok()" ng-disabled="NewGameForm.$invalid">開始する</button>
+  </div>
+</form>

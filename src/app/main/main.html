@@ -1,0 +1,9 @@
+<div ng-include="'app/components/navbar/navbar.html'"></div>
+
+<div class="container" ng-controller="MainController as ctrl">
+  <div ng-repeat="player in ctrl.players" class="player-area">
+    <span class="player-badge {{player.color}}">{{player.color}}</span>
+
+    <ng-include src="'app/components/techTree/techTree.html'"></ng-include>
+  </div>
+</div>
