@@ -46,7 +46,6 @@
 
   main {
     height: 100%;
-    margin-top: -56px;
     padding-top: 56px;
   }
 </style>
