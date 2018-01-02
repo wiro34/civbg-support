@@ -52,7 +52,7 @@
     font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
     display: block;
     font-weight: 300;
-    font-size: 8rem;
+    font-size: 5rem;
     color: #35495e;
     letter-spacing: 1px;
   }
