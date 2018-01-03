@@ -6,6 +6,7 @@
       <tech-tree :player="player"/>
       <arms-info :player="player"/>
       <distance :player="player"/>
+      <stack-info :player="player"/>
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@
   import ArmsInfo from '~/components/ArmsInfo.vue'
   import TechTree from '~/components/TechTree.vue'
   import Distance from '~/components/Distance.vue'
+  import StackInfo from '~/components/StackInfo.vue'
   import { mapState } from 'vuex'
   import { findCivById } from '~/models/civilizations'
 
@@ -32,6 +34,7 @@
       ArmsInfo,
       TechTree,
       Distance,
+      StackInfo
     }
   }
 </script>
@@ -98,6 +101,11 @@
     position: absolute
     right: 5px
     top: 5px
+
+  .stack-info
+    position: absolute
+    right: 10px
+    top: 120px
 
   .tech-tree
     padding-top: 50px

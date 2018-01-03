@@ -10,6 +10,7 @@ export default class Player {
     this.tree = {first: [civ.beginningTech]}
     this.distance = civ.distance
     this.additionalDistance = 0
+    this.stack = 2
   }
 
   static addTech (player, level, techId) {
