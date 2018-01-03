@@ -57,7 +57,7 @@ export const TECHS = [
     building: null,
     arms: null,
     moves: null,
-    stack: '3個',
+    stack: 3,
     coin: null,
     cultureCard: null
   },
@@ -153,7 +153,7 @@ export const TECHS = [
     building: '大学',
     arms: null,
     moves: null,
-    stack: ' 4個',
+    stack: 4,
     coin: null,
     cultureCard: null
   },
@@ -417,7 +417,7 @@ export const TECHS = [
     building: null,
     arms: null,
     moves: null,
-    stack: '5個',
+    stack: 5,
     coin: null,
     cultureCard: null
   },
@@ -459,7 +459,7 @@ export const TECHS = [
       sword: 4
     },
     moves: null,
-    stack: '6個',
+    stack: 6,
     coin: null,
     cultureCard: null
   },
