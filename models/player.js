@@ -31,6 +31,7 @@ export default class Player {
   static _updateArmsAndDistance (player) {
     player.arms = Player._calcArmsRank(player)
     player.distance = Player._calcDistance(player)
+    player.stack = Player._calcStackCount(player)
   }
 
   static _calcArmsRank (player) {
@@ -50,6 +51,11 @@ export default class Player {
     return tree.map(findTechById)
       .filter(tech => tech.distance)
       .reduce((distance, tech) => Math.max(distance, tech.distance), 2)
+  }
+
+  static _calcStackCount (player) {
+    const tree = Player._flattenTree(player)
+    return Math.max.apply(null, tree.map(techId => findTechById(techId).stack).concat(2))
   }
 
   static _flattenTree (player) {
