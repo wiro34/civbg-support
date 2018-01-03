@@ -1,5 +1,5 @@
 import { firebaseMutations, firebaseAction } from 'vuexfire'
-import { calcArmsRank, isNewtonUsed } from './functions'
+import { calcArmsRank, calcStackCount, isNewtonUsed } from './functions'
 import db from '~/plugins/firebase'
 import { SET_GAME_ID, SET_NEWTON_USED, ENABLE_TESLA_MODE, DISABLE_TESLA_MODE } from './mutation-types'
 import { START_GAME, LOAD_GAME, ADD_TECH, REMOVE_TECH, SET_PLAYERS_REF } from './action-types'
@@ -64,6 +64,7 @@ export const actions = {
         p.tree = {first: [], second: [], third: [], fourth: [], ...p.tree}
         p.tree[level].push(techId)
         p.arms = calcArmsRank(p)
+        p.stack = calcStackCount(p)
       }
       return p
     })
@@ -79,6 +80,7 @@ export const actions = {
           p.tree[level] = p.tree[level].filter(id => id !== techId)
         })
         p.arms = calcArmsRank(p)
+        p.stack = calcStackCount(p)
       }
       return p
     })
@@ -109,5 +111,6 @@ class Player {
       cavalry: 1,
       airforce: 0
     }
+    this.stack = 2
   }
 }

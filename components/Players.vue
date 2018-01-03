@@ -3,6 +3,7 @@
     <div v-for="player in players" class="player-view" :class="player.color">
       <span class="player-badge" :class="player.color">{{player.color}}</span>
       <arms-info :player="player"/>
+      <stack-info :player="player"/>
       <tech-tree :player="player"/>
     </div>
   </div>
@@ -11,6 +12,7 @@
 <script>
   import ArmsInfo from '~/components/ArmsInfo.vue'
   import TechTree from '~/components/TechTree.vue'
+  import StackInfo from '~/components/StackInfo.vue'
   import { mapState } from 'vuex'
 
   export default {
@@ -21,7 +23,8 @@
     },
     components: {
       ArmsInfo,
-      TechTree
+      TechTree,
+      StackInfo
     }
   }
 </script>
@@ -88,6 +91,12 @@
     position: absolute
     right: 10px
     top: 10px
+    z-index: 100
+
+  .stack-info
+    position: absolute
+    right: 10px
+    top: 80px
     z-index: 100
 
   .tech-tree

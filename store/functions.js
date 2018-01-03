@@ -13,6 +13,13 @@ export function calcArmsRank (player) {
     }, {sword: 1, cannon: 1, cavalry: 1, airforce: 0})
 }
 
+export function calcStackCount (player) {
+  const tree = player.tree ? player.tree : {}
+  return Math.max.apply(null,
+    (tree.first || []).concat(tree.second || [], tree.third || [], tree.fourt || []).map(techId => findTechById(techId).stack)
+      .concat(2))
+}
+
 export function isNewtonUsed (players) {
   return players.some(player => {
     return Object.values(player.tree || {}).some(techs => techs.includes(NEWTON))
