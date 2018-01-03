@@ -109,5 +109,6 @@ class Player {
       cavalry: 1,
       airforce: 0
     }
+    this.stack = 2
   }
 }
