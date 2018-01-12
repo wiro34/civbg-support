@@ -2,8 +2,9 @@
   <b-navbar toggleable="md" type="dark" variant="success" fixed="top">
     <b-navbar-brand :to="{name: 'index'}">CivBG Support</b-navbar-brand>
 
-    <b-navbar-toggle target="nav_collapse" v-if="ingame"></b-navbar-toggle>
-    <b-collapse is-nav id="nav_collapse" v-if="ingame">
+    <!-- if using v-if, error occurred: @see https://github.com/nuxt/nuxt.js/issues/1214 -->
+    <b-navbar-toggle target="nav_collapse" :class="{'hidden-on-top': !ingame}"></b-navbar-toggle>
+    <b-collapse is-nav id="nav_collapse" :class="{'hidden-on-top': !ingame}">
       <b-navbar-nav>
         <b-nav-item @click="toggleTeslaMode">テスラの効果を切り替える [{{teslaMode ? 'ON' : 'OFF'}}]</b-nav-item>
       </b-navbar-nav>
@@ -52,7 +53,8 @@
 </script>
 
 <style>
-  #nav_collapse.top {
+  .hidden-on-top,
+  .navbar-expand-md .navbar-collapse.hidden-on-top {
     display: none !important;
   }
 </style>
