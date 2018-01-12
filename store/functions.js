@@ -1,4 +1,9 @@
+import { findCivById } from './civilizations'
 import { NEWTON, findTechById } from './tech'
+
+export function getFirstTech (player) {
+  return findCivById(player.civilization).beginningTech
+}
 
 export function calcArmsRank (player) {
   const tree = player.tree ? player.tree : {}

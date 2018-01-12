@@ -1,7 +1,8 @@
 <template>
   <div class="players">
     <div v-for="player in players" class="player-view" :class="player.color">
-      <span class="player-badge" :class="player.color">{{player.color}}</span>
+      <span class="player-badge"
+            :class="player.color">{{getCivilizationName(player.civilization)}}</span>
       <arms-info :player="player"/>
       <tech-tree :player="player"/>
     </div>
@@ -12,12 +13,18 @@
   import ArmsInfo from '~/components/ArmsInfo.vue'
   import TechTree from '~/components/TechTree.vue'
   import { mapState } from 'vuex'
+  import { findCivById } from '~/store/civilizations'
 
   export default {
     computed: {
       ...mapState([
         'players'
       ])
+    },
+    methods: {
+      getCivilizationName (civilization) {
+        return findCivById(civilization).name
+      }
     },
     components: {
       ArmsInfo,
@@ -45,7 +52,7 @@
 
   .player-badge
     display: inline-block
-    width: 80px
+    width: 120px
     height: 20px
     border-radius: 5px
     text-align: center

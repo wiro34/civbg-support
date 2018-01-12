@@ -25,8 +25,8 @@
 
   export default {
     methods: {
-      async handleOk (colors) {
-        const gameId = await this.startGame(colors)
+      async handleOk (players) {
+        const gameId = await this.startGame(players)
         this.$router.push(`game/?${gameId}`)
       },
       ...mapActions({

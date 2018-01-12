@@ -1,5 +1,5 @@
 import { firebaseMutations, firebaseAction } from 'vuexfire'
-import { calcArmsRank, isNewtonUsed } from './functions'
+import { getFirstTech, calcArmsRank, isNewtonUsed } from './functions'
 import db from '~/plugins/firebase'
 import { SET_GAME_ID, SET_NEWTON_USED, ENABLE_TESLA_MODE, DISABLE_TESLA_MODE } from './mutation-types'
 import { START_GAME, LOAD_GAME, ADD_TECH, REMOVE_TECH, SET_PLAYERS_REF } from './action-types'
@@ -34,12 +34,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async [START_GAME] ({commit, dispatch}, colors) {
+  async [START_GAME] ({commit, dispatch}, players) {
     const gameRef = gamesRef.push()
     const playersRef = gameRef.child('players')
     playersRef.set([])
-    colors.forEach(color => {
-      playersRef.push(new Player(color))
+    players.forEach(player => {
+      player.arms = calcArmsRank(player)
+      player.tree = {first: [getFirstTech(player)]}
+      playersRef.push(player)
     })
     commit(SET_GAME_ID, gameRef.key)
     return gameRef.key
@@ -92,22 +94,4 @@ export const actions = {
       wait: true
     })
   }),
-}
-
-class Player {
-  constructor (color) {
-    this.color = color
-    this.tree = {
-      first: [],
-      second: [],
-      third: [],
-      fourth: [],
-    }
-    this.arms = {
-      sword: 1,
-      cannon: 1,
-      cavalry: 1,
-      airforce: 0
-    }
-  }
 }

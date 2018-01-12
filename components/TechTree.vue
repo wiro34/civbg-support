@@ -3,7 +3,7 @@
     <ul v-for="level in TECH_LEVELS" class="tech-row" :class="`tech-${level}`">
       <li class="tech-row-spacer"/>
       <li v-for="techId in tree[level]" class="tech-list-item">
-        <a class="remove" @click="removeTech({player, techId})">&times;</a>
+        <a class="remove" @click="removeTech({player, techId})" :class="{disabled: !isRemovable(techId)}">&times;</a>
         <span class="tech-list-item-label">{{techName(techId)}}</span>
       </li>
 
@@ -53,6 +53,9 @@
         }
         return true
       },
+      isRemovable (techId) {
+        return this.tree.first[0] !== techId
+      },
       remainingTechs (level) {
         const learned = Object.values(this.tree).reduce((mem, techs) => mem.concat(techs), [])
         return TECHS
@@ -61,9 +64,6 @@
       },
       selectableTechs (level) {
         const techs = this.remainingTechs(level)
-        if (level === 'first' && this.count('first') === 0) {
-          techs.push(...this.remainingTechs('second'))
-        }
         if (!this.newtonUsed) {
           techs.push({text: findTechById(NEWTON).name, value: NEWTON})
         }
@@ -138,6 +138,9 @@
       @media screen and (max-width: 1024px)
         font-size: 1rem
 
+      &:hover .remove
+        display: block
+
       .remove
         position: absolute
         top: 2px
@@ -151,8 +154,8 @@
         @media screen and (max-width: 1024px)
           display: block
 
-      &:hover .remove
-        display: block
+        &.disabled
+          display: none
 
     .tech-list-item-label
       color: #333
