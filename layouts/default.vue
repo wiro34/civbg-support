@@ -39,7 +39,7 @@
     height: 100%;
   }
 
-  #__nuxt, #nuxt-content {
+  #__nuxt, #__layout, #nuxt-content {
     height: 100%;
     position: relative;
   }
