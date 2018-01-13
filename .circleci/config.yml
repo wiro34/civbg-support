@@ -1,0 +1,61 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+
+jobs:
+  build:
+    <<: *defaults
+    docker:
+      - image: circleci/node:9.4
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn generate
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - dist
+  deploy:
+    machine: true
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - add_ssh_keys:
+          fingerprints:
+            - "e7:0b:2d:ef:18:af:ee:a3:c2:b6:2d:01:23:82:4a:e7"
+      - checkout
+      - run: |
+          git config --global user.name $GITHUB_USER
+          git config --global user.email $GITHUB_EMAIL
+      - run: |
+          git checkout gh-pages
+          rm -rf *
+          cp -r /tmp/workspace/dist/* .
+          cp -r /tmp/workspace/dist/.??* .
+          git add .
+          git commit --allow-empty -m "Deploy $(date '+%Y%m%d%H%M%S')"
+      - run: git push origin gh-pages
+
+workflows:
+  version: 2
+  deployment:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - develop
