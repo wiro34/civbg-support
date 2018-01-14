@@ -104,8 +104,8 @@
 
   .stack-info
     position: absolute
-    right: 10px
-    top: 120px
+    right: 15px
+    top: 110px
 
   .tech-tree
     padding-top: 50px

@@ -1,6 +1,6 @@
 <template>
   <div class="distance">
-    <b-form-group :label-cols="3" label="移動" class="mb-0" label-class="mb-0" horizontal>
+    <b-form-group :label-cols="5" label="移動" class="mb-0" label-class="mb-0" horizontal>
       <b-form-row>
         <b-col>
           <span class="base">{{baseDistance}}</span>
@@ -55,7 +55,7 @@
 
 <style lang="stylus">
   .distance
-    width: 10rem
+    width: 12rem
     text-align: center
 
     .base
@@ -68,7 +68,9 @@
     .col-form-legend
       font-size: 1rem
       font-weight: bold
+      text-align: right
       margin-top: .2rem
+      padding: 0
 
     select
       line-height: 1
