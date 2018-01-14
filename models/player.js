@@ -10,7 +10,7 @@ export default class Player {
     this.tree = {first: [civ.beginningTech]}
     this.distance = civ.distance
     this.additionalDistance = 0
-    this.stack = 2
+    this.stack = civ.stack
   }
 
   static addTech (player, level, techId) {
@@ -47,15 +47,17 @@ export default class Player {
   }
 
   static _calcDistance (player) {
+    const civ = findCivById(player.civilization)
     const tree = Player._flattenTree(player)
     return tree.map(findTechById)
       .filter(tech => tech.distance)
-      .reduce((distance, tech) => Math.max(distance, tech.distance), 2)
+      .reduce((distance, tech) => Math.max(distance, tech.distance), civ.distance)
   }
 
   static _calcStackCount (player) {
+    const civ = findCivById(player.civilization)
     const tree = Player._flattenTree(player)
-    return Math.max.apply(null, tree.map(techId => findTechById(techId).stack).concat(2))
+    return Math.max.apply(null, tree.map(techId => findTechById(techId).stack).concat(civ.stack))
   }
 
   static _flattenTree (player) {
