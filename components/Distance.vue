@@ -1,15 +1,12 @@
 <template>
   <div class="distance">
-    <b-form-group :label-cols="5" label="移動" class="mb-0" label-class="mb-0" horizontal>
-      <b-form-row>
-        <b-col>
-          <span class="base">{{baseDistance}}</span>
-        </b-col>
-        <b-col>
-          <b-form-select v-model="additionalDistance" :options="additionOptions" size="sm"></b-form-select>
-        </b-col>
-      </b-form-row>
-    </b-form-group>
+    <b-row>
+      <b-col cols="5" class="distance-label">移動</b-col>
+      <b-col cols="4" class="distance-value">{{player.distance}}マス</b-col>
+      <b-col cols="3">
+        <b-form-select v-model="additionalDistance" :options="additionOptions" size="sm"></b-form-select>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -27,9 +24,6 @@
       }
     },
     computed: {
-      baseDistance () {
-        return `${this.player.distance || 2}マス`
-      },
       additionalDistance: {
         get () {
           return this.player.additionalDistance
@@ -53,25 +47,29 @@
   }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .distance
     width: 12rem
-    text-align: center
 
-    .base
-      display: inline-block
-      margin-top: .2rem
+  .row
+    margin: 0
 
-    .col
-      padding: 0
+  .col, .col-3, .col-4, .col-5, .col-6
+    padding: 0
 
-    .col-form-legend
-      font-size: 1rem
-      font-weight: bold
-      text-align: right
-      margin-top: .2rem
-      padding: 0
+  .distance-label
+    font-size: 1rem
+    font-weight: bold
+    text-align: right
+    margin-top: .3rem
 
-    select
-      line-height: 1
+  .distance-value
+    margin-top: .3rem
+    padding: 0 5px
+
+  select
+    line-height: 1
+
+  .custom-select
+    padding: 0 .5rem
 </style>

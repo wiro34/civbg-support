@@ -9,7 +9,8 @@ import {
   ADD_TECH,
   REMOVE_TECH,
   SET_PLAYERS_REF,
-  UPDATE_ADDITIONAL_DISTANCE
+  UPDATE_ADDITIONAL_DISTANCE,
+  UPDATE_ADDITIONAL_STACK
 } from './action-types'
 
 const gamesRef = db.ref('games')
@@ -100,6 +101,15 @@ export const actions = {
     getters.playerRef(player).transaction((p) => {
       if (p) {
         p.additionalDistance = additionalDistance
+      }
+      return p
+    })
+  },
+
+  [UPDATE_ADDITIONAL_STACK] ({getters}, {player, additionalStack}) {
+    getters.playerRef(player).transaction((p) => {
+      if (p) {
+        p.additionalStack = additionalStack
       }
       return p
     })
