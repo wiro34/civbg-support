@@ -128,7 +128,7 @@
       border-radius: 5px
       box-sizing: border-box
       background-color: white
-      font-size: 1.3rem
+      font-size: 1.1rem
       overflow: hidden
       position: relative
       display: flex
@@ -176,7 +176,7 @@
         height: 100%
         border-radius: 5px
         text-align: center
-        font-size: 1.5rem
+        font-size: 1.3rem
 
     .tech-second .tech-row-spacer
       width: item-width * .5
@@ -194,7 +194,7 @@
       .tech-list-item
         width: item-width
         if count > 8
-          font-size: 1.2rem
+          font-size: 1rem
 
       .tech-second .tech-row-spacer
         width: item-width * .5

@@ -55,7 +55,11 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .navbar {
+    font-weight: bold;
+  }
+
   .hidden-on-top,
   .navbar-expand-md .navbar-collapse.hidden-on-top {
     display: none !important;

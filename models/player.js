@@ -1,5 +1,6 @@
 import { findCivById } from './civilizations'
 import { findTechById } from './tech'
+import { INVESTMENTS } from './investments'
 
 export default class Player {
   constructor (player) {
@@ -11,6 +12,10 @@ export default class Player {
     this.distance = civ.distance
     this.additionalDistance = 0
     this.stack = civ.stack
+    this.investment = INVESTMENTS.reduce((invs, inv) => {
+      invs[inv.id] = 0
+      return invs
+    }, {})
   }
 
   static addTech (player, level, techId) {

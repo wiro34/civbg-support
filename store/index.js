@@ -10,7 +10,9 @@ import {
   REMOVE_TECH,
   SET_PLAYERS_REF,
   UPDATE_ADDITIONAL_DISTANCE,
-  UPDATE_ADDITIONAL_STACK
+  UPDATE_ADDITIONAL_STACK,
+  INCREMENT_INVESTMENT,
+  DECREMENT_INVESTMENT
 } from './action-types'
 
 const gamesRef = db.ref('games')
@@ -110,6 +112,24 @@ export const actions = {
     getters.playerRef(player).transaction((p) => {
       if (p) {
         p.additionalStack = additionalStack
+      }
+      return p
+    })
+  },
+
+  [INCREMENT_INVESTMENT] ({getters}, {player, investment}) {
+    getters.playerRef(player).transaction((p) => {
+      if (p && p.investment[investment] < 9) {
+        p.investment[investment] += 1
+      }
+      return p
+    })
+  },
+
+  [DECREMENT_INVESTMENT] ({getters}, {player, investment}) {
+    getters.playerRef(player).transaction((p) => {
+      if (p && p.investment[investment] > 0) {
+        p.investment[investment] -= 1
       }
       return p
     })

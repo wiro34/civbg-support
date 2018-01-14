@@ -7,6 +7,7 @@
       <arms-info :player="player"/>
       <distance :player="player"/>
       <stack-info :player="player"/>
+      <investment :player="player"/>
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@
   import TechTree from '~/components/TechTree.vue'
   import Distance from '~/components/Distance.vue'
   import StackInfo from '~/components/StackInfo.vue'
+  import Investment from '~/components/Investment.vue'
   import { mapState } from 'vuex'
   import { findCivById } from '~/models/civilizations'
 
@@ -34,7 +36,8 @@
       ArmsInfo,
       TechTree,
       Distance,
-      StackInfo
+      StackInfo,
+      Investment
     }
   }
 </script>
@@ -59,12 +62,11 @@
   .player-badge
     display: inline-block
     width: 120px
-    height: 20px
+    height: 1.5rem
     border-radius: 5px
     text-align: center
     font-weight: bold
     margin: 5px
-    font-size: 0.8rem
     position: absolute
 
   &.RED
@@ -102,16 +104,25 @@
     right: 5px
     top: 5px
 
-  .stack-info
-    position: absolute
-    right: 15px
-    top: 110px
-
-  .tech-tree
-    padding-top: 50px
-
   .distance
     position: absolute
     right: 15px
-    top: 80px
+    top: 70px
+
+  .stack-info
+    position: absolute
+    right: 15px
+    top: 100px
+
+  .tech-tree
+    padding-top: 50px
+    padding-right: 100px
+    @media screen and (orientation: portrait)
+      padding-top: 200px
+      padding-right: 50px
+
+  .investment
+    position: absolute
+    right: 5px
+    top: 130px
 </style>

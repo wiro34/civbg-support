@@ -66,10 +66,4 @@
   .distance-value
     margin-top: .3rem
     padding: 0 5px
-
-  select
-    line-height: 1
-
-  .custom-select
-    padding: 0 .5rem
 </style>

@@ -25,7 +25,7 @@
 <style>
   html {
     font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     word-spacing: 1px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -46,6 +46,15 @@
 
   main {
     height: 100%;
-    padding-top: 56px;
+    padding-top: 49px;
+  }
+
+  /* patch bootstrap design */
+  .custom-select {
+    padding: 0 0.5rem;
+  }
+
+  select.sm {
+    line-height: 1;
   }
 </style>
