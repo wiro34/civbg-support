@@ -1,7 +1,7 @@
 import { firebaseMutations, firebaseAction } from 'vuexfire'
 import db from '~/plugins/firebase'
-import Player from './player'
-import { isNewtonUsed } from './functions'
+import Player from '~/models/player'
+import { NEWTON } from '~/models/tech'
 import { SET_GAME_ID, SET_NEWTON_USED, ENABLE_TESLA_MODE, DISABLE_TESLA_MODE } from './mutation-types'
 import {
   START_GAME,
@@ -21,13 +21,22 @@ export const state = () => ({
   teslaMode: false,
 })
 
+export const getters = {
+  playerRef: (state) => (player) => {
+    const playersRef = gamesRef.child(state.gameId).child('players')
+    return playersRef.child(player['.key'])
+  },
+}
+
 export const mutations = {
   [SET_GAME_ID] (state, gameId) {
     state.gameId = gameId
   },
 
   [SET_NEWTON_USED] (state) {
-    state.newtonUsed = isNewtonUsed(state.players)
+    state.newtonUsed = state.players.some(player => {
+      return Object.values(player.tree || {}).some(techs => techs.includes(NEWTON))
+    })
   },
 
   [ENABLE_TESLA_MODE] (state) {
@@ -65,9 +74,8 @@ export const actions = {
     return false
   },
 
-  async [ADD_TECH] ({state, commit}, {player, level, techId}) {
-    const playersRef = gamesRef.child(state.gameId).child('players')
-    await playersRef.child(player['.key']).transaction((p) => {
+  [ADD_TECH] ({getters, commit}, {player, level, techId}) {
+    getters.playerRef(player).transaction((p) => {
       if (p) {
         Player.addTech(p, level, techId)
       }
@@ -77,9 +85,8 @@ export const actions = {
     commit(DISABLE_TESLA_MODE)
   },
 
-  [REMOVE_TECH] ({state, commit}, {player, techId}) {
-    const playersRef = gamesRef.child(state.gameId).child('players')
-    playersRef.child(player['.key']).transaction((p) => {
+  [REMOVE_TECH] ({getters, commit}, {player, techId}) {
+    getters.playerRef(player).transaction((p) => {
       if (p) {
         Player.removeTech(p, techId)
       }
@@ -89,20 +96,19 @@ export const actions = {
     commit(DISABLE_TESLA_MODE)
   },
 
+  [UPDATE_ADDITIONAL_DISTANCE] ({getters}, {player, additionalDistance}) {
+    getters.playerRef(player).transaction((p) => {
+      if (p) {
+        p.additionalDistance = additionalDistance
+      }
+      return p
+    })
+  },
+
   [SET_PLAYERS_REF]: firebaseAction(({bindFirebaseRef, commit}, playersRef) => {
     bindFirebaseRef('players', playersRef, {
       readyCallback: () => commit(SET_NEWTON_USED),
       wait: true
     })
   }),
-
-  [UPDATE_ADDITIONAL_DISTANCE] ({state}, {player, additionalDistance}) {
-    const playersRef = gamesRef.child(state.gameId).child('players')
-    playersRef.child(player['.key']).transaction((p) => {
-      if (p) {
-        p.additionalDistance = additionalDistance
-      }
-      return p
-    })
-  }
 }

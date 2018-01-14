@@ -27,7 +27,7 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { CIVILIZATIONS } from '~/store/civilizations'
+  import { CIVILIZATIONS } from '~/models/civilizations'
 
   const COLORS = ['RED', 'GREEN', 'BLUE', 'YELLOW', 'PURPLE'].map(c => ({id: c, name: c}))
 

@@ -15,7 +15,7 @@
   import TechTree from '~/components/TechTree.vue'
   import Distance from '~/components/Distance.vue'
   import { mapState } from 'vuex'
-  import { findCivById } from '~/store/civilizations'
+  import { findCivById } from '~/models/civilizations'
 
   export default {
     computed: {

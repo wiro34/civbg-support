@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import { TECHS, NEWTON, findTechById } from '~/store/tech'
   import { mapState, mapActions } from 'vuex'
+  import { TECHS, NEWTON, findTechById } from '~/models/tech'
   import { ADD_TECH, REMOVE_TECH } from '~/store/action-types'
 
   const TECH_LEVELS = ['first', 'second', 'third', 'fourth']
