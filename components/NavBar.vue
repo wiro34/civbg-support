@@ -10,6 +10,9 @@
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
+        <b-nav-item href="https://hobbyjapan.co.jp/civ/" target="_blank">ホビジャパ訂正</b-nav-item>
+        <b-nav-item href="http://vivit-jc.hatenablog.com/entry/2013/09/17/060839" target="_blank">エラッタ（前半）</b-nav-item>
+        <b-nav-item href="http://vivit-jc.hatenablog.com/entry/2013/09/26/224115" target="_blank">エラッタ（後半）</b-nav-item>
         <b-nav-item @click="showQRCode">QRを表示</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
