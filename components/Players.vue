@@ -3,8 +3,9 @@
     <div v-for="player in players" class="player-view" :class="player.color">
       <span class="player-badge"
             :class="player.color">{{getCivilizationName(player.civilization)}}</span>
-      <arms-info :player="player"/>
       <tech-tree :player="player"/>
+      <arms-info :player="player"/>
+      <distance :player="player"/>
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script>
   import ArmsInfo from '~/components/ArmsInfo.vue'
   import TechTree from '~/components/TechTree.vue'
+  import Distance from '~/components/Distance.vue'
   import { mapState } from 'vuex'
   import { findCivById } from '~/store/civilizations'
 
@@ -28,7 +30,8 @@
     },
     components: {
       ArmsInfo,
-      TechTree
+      TechTree,
+      Distance,
     }
   }
 </script>
@@ -93,10 +96,14 @@
 
   .arms-info
     position: absolute
-    right: 10px
-    top: 10px
-    z-index: 100
+    right: 5px
+    top: 5px
 
   .tech-tree
     padding-top: 50px
+
+  .distance
+    position: absolute
+    right: 15px
+    top: 80px
 </style>

@@ -5,6 +5,7 @@ export const CIVILIZATIONS = [
     leader: 'モンテズマ',
     beginningTech: '2-2', // 灌漑
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'america',
@@ -12,6 +13,7 @@ export const CIVILIZATIONS = [
     leader: 'リンカーン',
     beginningTech: '1-7', // 通貨
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'arabia',
@@ -19,6 +21,7 @@ export const CIVILIZATIONS = [
     leader: 'サラディン',
     beginningTech: '2-10', // 数学
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'england',
@@ -26,6 +29,7 @@ export const CIVILIZATIONS = [
     leader: 'エリザベス',
     beginningTech: '1-1', // 海軍
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'india',
@@ -33,6 +37,7 @@ export const CIVILIZATIONS = [
     leader: 'ガンジー',
     beginningTech: '1-10', // 農業
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'egypt',
@@ -40,6 +45,7 @@ export const CIVILIZATIONS = [
     leader: 'クレオパトラ',
     beginningTech: '2-7', // 建築学
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'greece',
@@ -47,6 +53,7 @@ export const CIVILIZATIONS = [
     leader: 'アレクサンダー',
     beginningTech: '2-13', // 民主主義
     government: '民主主義',
+    distance: 2,
   },
   {
     id: 'zulu',
@@ -54,6 +61,7 @@ export const CIVILIZATIONS = [
     leader: 'シャカ',
     beginningTech: '1-6', // 畜産
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'spain',
@@ -61,9 +69,7 @@ export const CIVILIZATIONS = [
     leader: 'イザベル',
     beginningTech: '1-4', // 航海術
     government: '専制政治',
-    abilities: {
-      moves: 1,
-    }
+    distance: 3,
   },
   {
     id: 'china',
@@ -71,6 +77,7 @@ export const CIVILIZATIONS = [
     leader: '武則天',
     beginningTech: '1-11', // 筆記
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'germany',
@@ -78,6 +85,7 @@ export const CIVILIZATIONS = [
     leader: 'ビルマルク',
     beginningTech: '1-3', // 金属加工術
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'japan',
@@ -85,6 +93,7 @@ export const CIVILIZATIONS = [
     leader: '徳川',
     beginningTech: '2-5', // 騎士道
     government: '封建制',
+    distance: 2,
   },
   {
     id: 'france',
@@ -92,6 +101,7 @@ export const CIVILIZATIONS = [
     leader: 'ナポレオン',
     beginningTech: '1-9', // 陶器
     government: '専制政治',
+    distance: 2,
     abilities: {
       battleBonus: 2
     }
@@ -102,6 +112,7 @@ export const CIVILIZATIONS = [
     leader: 'チンギス',
     beginningTech: '1-2', // 騎乗
     government: '専制政治',
+    distance: 2,
   },
   {
     id: 'roma',
@@ -109,6 +120,7 @@ export const CIVILIZATIONS = [
     leader: 'カエサル',
     beginningTech: '1-12', // 法律
     government: '共和制',
+    distance: 2,
   },
   {
     id: 'russia',
@@ -116,6 +128,7 @@ export const CIVILIZATIONS = [
     leader: 'エカチェリーナ',
     beginningTech: '3-4', // 共産主義
     government: '共産主義',
+    distance: 2,
   },
 ]
 

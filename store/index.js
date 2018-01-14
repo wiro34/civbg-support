@@ -1,8 +1,16 @@
 import { firebaseMutations, firebaseAction } from 'vuexfire'
-import { getFirstTech, calcArmsRank, isNewtonUsed } from './functions'
 import db from '~/plugins/firebase'
+import Player from './player'
+import { isNewtonUsed } from './functions'
 import { SET_GAME_ID, SET_NEWTON_USED, ENABLE_TESLA_MODE, DISABLE_TESLA_MODE } from './mutation-types'
-import { START_GAME, LOAD_GAME, ADD_TECH, REMOVE_TECH, SET_PLAYERS_REF } from './action-types'
+import {
+  START_GAME,
+  LOAD_GAME,
+  ADD_TECH,
+  REMOVE_TECH,
+  SET_PLAYERS_REF,
+  UPDATE_ADDITIONAL_DISTANCE
+} from './action-types'
 
 const gamesRef = db.ref('games')
 
@@ -39,9 +47,7 @@ export const actions = {
     const playersRef = gameRef.child('players')
     playersRef.set([])
     players.forEach(player => {
-      player.arms = calcArmsRank(player)
-      player.tree = {first: [getFirstTech(player)]}
-      playersRef.push(player)
+      playersRef.push(new Player(player))
     })
     commit(SET_GAME_ID, gameRef.key)
     return gameRef.key
@@ -63,9 +69,7 @@ export const actions = {
     const playersRef = gamesRef.child(state.gameId).child('players')
     await playersRef.child(player['.key']).transaction((p) => {
       if (p) {
-        p.tree = {first: [], second: [], third: [], fourth: [], ...p.tree}
-        p.tree[level].push(techId)
-        p.arms = calcArmsRank(p)
+        Player.addTech(p, level, techId)
       }
       return p
     })
@@ -76,11 +80,8 @@ export const actions = {
   [REMOVE_TECH] ({state, commit}, {player, techId}) {
     const playersRef = gamesRef.child(state.gameId).child('players')
     playersRef.child(player['.key']).transaction((p) => {
-      if (p && p.tree) {
-        Object.keys(p.tree).forEach(level => {
-          p.tree[level] = p.tree[level].filter(id => id !== techId)
-        })
-        p.arms = calcArmsRank(p)
+      if (p) {
+        Player.removeTech(p, techId)
       }
       return p
     })
@@ -94,4 +95,14 @@ export const actions = {
       wait: true
     })
   }),
+
+  [UPDATE_ADDITIONAL_DISTANCE] ({state}, {player, additionalDistance}) {
+    const playersRef = gamesRef.child(state.gameId).child('players')
+    playersRef.child(player['.key']).transaction((p) => {
+      if (p) {
+        p.additionalDistance = additionalDistance
+      }
+      return p
+    })
+  }
 }

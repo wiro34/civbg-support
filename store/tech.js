@@ -8,7 +8,7 @@ export const TECHS = [
     politics: null,
     building: '造船所',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -20,7 +20,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: 3,
+    distance: 3,
     stack: null,
     coin: null,
     cultureCard: null
@@ -32,7 +32,7 @@ export const TECHS = [
     politics: null,
     building: '兵舎',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -44,7 +44,7 @@ export const TECHS = [
     politics: null,
     building: '港',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -56,7 +56,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: '3個',
     coin: null,
     cultureCard: null
@@ -68,7 +68,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -80,7 +80,7 @@ export const TECHS = [
     politics: null,
     building: '市場',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -92,7 +92,7 @@ export const TECHS = [
     politics: null,
     building: '神殿',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -104,7 +104,7 @@ export const TECHS = [
     politics: null,
     building: '穀物庫',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: 1,
@@ -116,7 +116,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -128,7 +128,7 @@ export const TECHS = [
     politics: null,
     building: '図書館',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -140,7 +140,7 @@ export const TECHS = [
     politics: '共和制',
     building: '交易所',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -152,7 +152,7 @@ export const TECHS = [
     politics: null,
     building: '大学',
     arms: null,
-    moves: null,
+    distance: null,
     stack: ' 4個',
     coin: null,
     cultureCard: null
@@ -164,7 +164,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -176,7 +176,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: 1,
     cultureCard: 1,
@@ -188,7 +188,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: 1,
     cultureCard: null
@@ -202,7 +202,7 @@ export const TECHS = [
     arms: {
       cavalry: 2
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -214,7 +214,7 @@ export const TECHS = [
     politics: '君主政治',
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -226,7 +226,7 @@ export const TECHS = [
     politics: null,
     building: '工房',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -238,7 +238,7 @@ export const TECHS = [
     politics: null,
     building: '上水道',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -250,7 +250,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -264,7 +264,7 @@ export const TECHS = [
     arms: {
       cannon: 2
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -276,7 +276,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: 4,
+    distance: 4,
     stack: null,
     coin: null,
     cultureCard: null
@@ -292,7 +292,7 @@ export const TECHS = [
       cannon: 2,
       cavalry: 2
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -306,7 +306,7 @@ export const TECHS = [
     arms: {
       sword: 2
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -320,7 +320,7 @@ export const TECHS = [
     arms: {
       sword: 3
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -332,7 +332,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -344,7 +344,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -356,7 +356,7 @@ export const TECHS = [
     politics: '共産主義',
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -368,7 +368,7 @@ export const TECHS = [
     politics: null,
     building: '銀行',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -380,7 +380,7 @@ export const TECHS = [
     politics: null,
     building: '士官学校',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -392,7 +392,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: 5,
+    distance: 5,
     stack: null,
     coin: null,
     cultureCard: null
@@ -404,7 +404,7 @@ export const TECHS = [
     politics: '原理主義',
     building: '大聖堂',
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: 1,
@@ -416,7 +416,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: '5個',
     coin: null,
     cultureCard: null
@@ -430,7 +430,7 @@ export const TECHS = [
     arms: {
       cannon: 3
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -444,7 +444,7 @@ export const TECHS = [
     arms: {
       cavalry: 3
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: 1,
     cultureCard: null
@@ -458,7 +458,7 @@ export const TECHS = [
     arms: {
       sword: 4
     },
-    moves: null,
+    distance: null,
     stack: '6個',
     coin: null,
     cultureCard: null
@@ -470,7 +470,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -482,7 +482,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: 1,
     cultureCard: null
@@ -496,7 +496,7 @@ export const TECHS = [
     arms: {
       cannon: 4
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -510,7 +510,7 @@ export const TECHS = [
     arms: {
       cavalry: 4
     },
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -524,7 +524,7 @@ export const TECHS = [
     arms: {
       airforce: 1
     },
-    moves: 6,
+    distance: 6,
     stack: null,
     coin: null,
     cultureCard: null
@@ -536,7 +536,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -548,7 +548,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -560,7 +560,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
@@ -572,7 +572,7 @@ export const TECHS = [
     politics: null,
     building: null,
     arms: null,
-    moves: null,
+    distance: null,
     stack: null,
     coin: null,
     cultureCard: null
